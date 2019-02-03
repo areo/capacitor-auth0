@@ -1,0 +1,43 @@
+{
+  "name": "capacitor-auth0",
+  "version": "0.0.1",
+  "description": "Auth0 plugin for capacitor",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rm -rf ./dist",
+    "watch": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "author": "Areo AS",
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor/core": "latest"
+  },
+  "devDependencies": {
+    "typescript": "^3.3.1"
+  },
+  "files": [
+    "index.d.ts",
+    "ios/",
+    "android/",
+    "CapacitorAuth0.podspec"
+  ],
+  "keywords": [
+    "capacitor",
+    "plugin",
+    "native"
+  ],
+  "capacitor": {
+    "ios": {
+      "src": "ios"
+    },
+    "android": {
+      "src": "android"
+    }
+  },
+  "repository": "github:areo/capacitor-auth0",
+  "bugs": {
+    "url": "https://github.com/areo/capacitor-auth0/issues"
+  }
+}
