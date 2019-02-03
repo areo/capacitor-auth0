@@ -5,8 +5,8 @@ import Capacitor
  * Please read the Capacitor iOS Plugin Development Guide
  * here: https://capacitor.ionicframework.com/docs/plugins/ios
  */
-@objc(Auth0Plugin)
-public class Auth0Plugin: CAPPlugin {
+@objc(Auth0)
+public class Auth0: CAPPlugin {
     
     @objc func echo(_ call: CAPPluginCall) {
         let value = call.getString("value") ?? ""

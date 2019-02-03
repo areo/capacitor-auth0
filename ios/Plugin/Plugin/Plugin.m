@@ -3,6 +3,6 @@
 
 // Define the plugin using the CAP_PLUGIN Macro, and
 // each method the plugin supports using the CAP_PLUGIN_METHOD macro.
-CAP_PLUGIN(Auth0Plugin, "Auth0Plugin",
+CAP_PLUGIN(Auth0, "Auth0",
            CAP_PLUGIN_METHOD(echo, CAPPluginReturnPromise);
 )

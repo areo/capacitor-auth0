@@ -1,4 +1,4 @@
-
-  <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.areo.capacitor-auth0.capacitorauth0">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="io.areo.auth0capacitor">
+  <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

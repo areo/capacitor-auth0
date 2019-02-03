@@ -11,10 +11,11 @@
   },
   "author": "Areo AS",
   "license": "MIT",
-  "dependencies": {
+  "peerDependencies": {
     "@capacitor/core": "latest"
   },
   "devDependencies": {
+    "@capacitor/core": "latest",
     "typescript": "^3.3.1"
   },
   "files": [

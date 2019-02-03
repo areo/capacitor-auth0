@@ -1,9 +1,21 @@
 declare global {
   interface PluginRegistry {
-    Auth0?: Auth0Plugin
+    Auth0?: Auth0
   }
 }
 
-export interface Auth0Plugin {
-  echo(options: { value: string }): Promise<{ value: string }>
+export interface Auth0 {
+  startWebAuth(options?: AuthOptions): Promise<Credentials>
+  getCredentials(): Promise<Credentials>
+  renew(): Promise<Credentials>
+}
+
+export interface Credentials {
+  accessToken: string
+  refreshToken?: string
+}
+
+export interface AuthOptions {
+  scope?: string
+  audience?: string
 }
