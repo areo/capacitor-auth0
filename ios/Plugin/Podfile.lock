@@ -1,20 +1,34 @@
 PODS:
-  - Capacitor (0.0.8):
-    - CapacitorCordova (= 0.0.8)
+  - Auth0 (1.14.1):
+    - SimpleKeychain
+  - Capacitor (0.0.113):
+    - CapacitorCordova (= 0.0.113)
     - GCDWebServer (~> 3.0)
-  - CapacitorCordova (0.0.8)
-  - GCDWebServer (3.4.2):
-    - GCDWebServer/Core (= 3.4.2)
-  - GCDWebServer/Core (3.4.2)
+  - CapacitorCordova (0.0.113)
+  - GCDWebServer (3.5.2):
+    - GCDWebServer/Core (= 3.5.2)
+  - GCDWebServer/Core (3.5.2)
+  - SimpleKeychain (0.8.1)
 
 DEPENDENCIES:
+  - Auth0 (~> 1.14)
   - Capacitor
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Auth0
+    - Capacitor
+    - CapacitorCordova
+    - GCDWebServer
+    - SimpleKeychain
+
 SPEC CHECKSUMS:
-  Capacitor: 36a275e2fd85b69a2cb9633e8920ecf5c5aab88d
-  CapacitorCordova: cf26a9b075eb1f339118c920a975e4ff9e403193
-  GCDWebServer: 8d67ee9f634b4bb91eb4b8aee440318a5fc6debd
+  Auth0: 064dc115cd99eec7334d1cab565f4d974eecac4d
+  Capacitor: b37060b0b2685257bedbc69e49a54a74ef30fb9a
+  CapacitorCordova: a923a32bc7ad5f1f3d69664ca86ff69580343ed3
+  GCDWebServer: ead88cd14596dd4eae4f5830b8877c87c8728990
+  SimpleKeychain: e2485c28d82fcece35e9e41faeac42ebfe614815
 
-PODFILE CHECKSUM: 57e6d463d83fe9e2081ca17be52456b12c5e148c
+PODFILE CHECKSUM: 97dfe0013809e7588585dd9e776943a6c26b74d2
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3
