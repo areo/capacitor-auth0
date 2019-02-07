@@ -1,7 +1,6 @@
 package io.areo.auth0capacitor;
 
 import android.app.Dialog;
-import android.support.annotation.NonNull;
 
 import com.auth0.android.Auth0;
 import com.auth0.android.authentication.AuthenticationAPIClient;
@@ -40,7 +39,7 @@ public class Auth0Plugin extends Plugin {
 
         builder.start(this.getActivity(), new AuthCallback() {
             @Override
-            public void onFailure(@NonNull Dialog dialog) {
+            public void onFailure(Dialog dialog) {
                 call.error("authentication failed");
             }
 
@@ -50,7 +49,7 @@ public class Auth0Plugin extends Plugin {
             }
 
             @Override
-            public void onSuccess(@NonNull Credentials credentials) {
+            public void onSuccess(Credentials credentials) {
                 SecureCredentialsManager manager = credentialsManager();
                 manager.saveCredentials(credentials);
                 call.success(credentialsResult(credentials));
