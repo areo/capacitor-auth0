@@ -1,9 +1,13 @@
 import Foundation
 import Capacitor
 import Auth0
+import SimpleKeychain
 
 @objc(Auth0Plugin)
 public class Auth0Plugin: CAPPlugin {
+    private let storage = A0SimpleKeychain()
+    private let storeKey: String = "credentials"
+
     @objc func startWebAuth(_ call: CAPPluginCall) {
         let auth0 = Auth0.webAuth()
 
@@ -47,7 +51,41 @@ public class Auth0Plugin: CAPPlugin {
     }
 
     @objc func renew(_ call: CAPPluginCall) {
-        // TODO: force renew when access token is not expired
-        getCredentials(call)
+        guard
+            let credentials = self.retrieveCredentials(),
+            let refreshToken = credentials.refreshToken
+            else { call.error("Failed to fetch credentials from store"); return }
+
+        let authentication = Auth0.authentication()
+        authentication.renew(withRefreshToken: refreshToken, scope: nil).start {
+            switch $0 {
+            case .success(let credentials):
+                let newCredentials = Credentials(accessToken: credentials.accessToken,
+                                                 tokenType: credentials.tokenType,
+                                                 idToken: credentials.idToken,
+                                                 refreshToken: refreshToken,
+                                                 expiresIn: credentials.expiresIn,
+                                                 scope: credentials.scope)
+                let credentialsManager = CredentialsManager(authentication: authentication)
+                credentialsManager.store(credentials: newCredentials)
+                call.success([
+                    "accessToken": newCredentials.accessToken,
+                    "refreshToken": newCredentials.refreshToken
+                ])
+            case .failure(let error):
+                call.error("Failed to renew credentials")
+            }
+        }
+    }
+
+    private func retrieveCredentials() -> Credentials? {
+        guard
+            let data = self.storage.data(forKey: self.storeKey),
+            let credentials = NSKeyedUnarchiver.unarchiveObject(with: data) as? Credentials,
+            credentials.accessToken != nil,
+            credentials.expiresIn != nil,
+            credentials.refreshToken != nil
+            else { return nil }
+        return credentials
     }
 }
