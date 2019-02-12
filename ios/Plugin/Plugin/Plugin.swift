@@ -11,6 +11,10 @@ public class Auth0Plugin: CAPPlugin {
     @objc func startWebAuth(_ call: CAPPluginCall) {
         let auth0 = Auth0.webAuth()
 
+        if #available(iOS 11, *) {
+            _ = auth0.useLegacyAuthentication()
+        }
+
         let audience = call.getString("audience") ?? ""
         if !audience.isEmpty {
             auth0.audience(audience)
@@ -21,17 +25,19 @@ public class Auth0Plugin: CAPPlugin {
             auth0.scope(scope)
         }
 
-        auth0.start { result in
-            switch result {
-            case .success(let credentials):
-                let credentialsManager = CredentialsManager(authentication: Auth0.authentication())
-                credentialsManager.store(credentials: credentials)
-                call.success([
-                    "accessToken": credentials.accessToken,
-                    "refreshToken": credentials.refreshToken
-                ])
-            case .failure(let error):
-                call.error("authentication failed")
+        DispatchQueue.main.async {
+            auth0.start { result in
+                switch result {
+                case .success(let credentials):
+                    let credentialsManager = CredentialsManager(authentication: Auth0.authentication())
+                    credentialsManager.store(credentials: credentials)
+                    call.success([
+                        "accessToken": credentials.accessToken,
+                        "refreshToken": credentials.refreshToken
+                    ])
+                case .failure(let error):
+                    call.error("authentication failed")
+                }
             }
         }
     }
