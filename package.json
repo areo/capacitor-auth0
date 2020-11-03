@@ -1,6 +1,6 @@
 {
   "name": "capacitor-auth0",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Auth0 plugin for capacitor",
   "types": "index.d.ts",
   "scripts": {
@@ -12,11 +12,13 @@
   "author": "Areo AS",
   "license": "MIT",
   "peerDependencies": {
-    "@capacitor/core": "latest"
+    "@capacitor/core": "^2.4.2"
   },
   "devDependencies": {
-    "@capacitor/core": "latest",
-    "typescript": "^3.3.1"
+    "@capacitor/android": "^2.4.2",
+    "@capacitor/core": "^2.4.2",
+    "@capacitor/ios": "^2.4.2",
+    "typescript": "^4.0.5"
   },
   "files": [
     "index.d.ts",
@@ -27,7 +29,8 @@
   "keywords": [
     "capacitor",
     "plugin",
-    "native"
+    "native",
+    "auth0"
   ],
   "capacitor": {
     "ios": {
