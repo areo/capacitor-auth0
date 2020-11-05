@@ -1,4 +1,4 @@
-declare global {
+declare module '@capacitor/core' {
   interface PluginRegistry {
     Auth0?: Auth0
   }

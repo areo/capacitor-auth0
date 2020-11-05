@@ -1,0 +1,37 @@
+PODS:
+  - Auth0 (1.30.0):
+    - JWTDecode
+    - SimpleKeychain
+  - Capacitor (2.4.2):
+    - CapacitorCordova
+  - CapacitorCordova (2.4.2)
+  - JWTDecode (2.5.0)
+  - SimpleKeychain (0.12.1)
+
+DEPENDENCIES:
+  - Auth0 (~> 1.30)
+  - "Capacitor (from `../node_modules/@capacitor/ios`)"
+  - "CapacitorCordova (from `../node_modules/@capacitor/ios`)"
+
+SPEC REPOS:
+  trunk:
+    - Auth0
+    - JWTDecode
+    - SimpleKeychain
+
+EXTERNAL SOURCES:
+  Capacitor:
+    :path: "../node_modules/@capacitor/ios"
+  CapacitorCordova:
+    :path: "../node_modules/@capacitor/ios"
+
+SPEC CHECKSUMS:
+  Auth0: b0e75f59f9ed7c2daa03146d5fe46445dea0d2f8
+  Capacitor: 99a3d85b31f782d6b58bd9e3f2de4ed719c94d51
+  CapacitorCordova: 64114f68ed75e409d37a8e1129c0038b3a0cec0d
+  JWTDecode: d4c176a28a29f7e6f9abf5c90ad3002f69b98c7c
+  SimpleKeychain: 77443015b0f29005c16f74bf858469a9e9fb05e8
+
+PODFILE CHECKSUM: ccdbacb383fec81d73d523d244f520dfad2797ab
+
+COCOAPODS: 1.10.0
